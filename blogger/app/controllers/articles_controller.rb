@@ -22,13 +22,6 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end
 
-  def destroy
-    Article.find(params[:id]).destroy
-
-    flash.notice = "Article #{@article.title} has been destroyed"
-
-    redirect_to articles_path
-  end
 
   def edit
     @article = Article.find(params[:id])
@@ -42,4 +35,13 @@ class ArticlesController < ApplicationController
 
     redirect_to articles_path
   end
+
+    def destroy
+    Article.find(params[:id]).destroy
+
+    flash.notice = "Article #{@article.title} has been destroyed"
+
+    redirect_to articles_path
+  end
+
 end
