@@ -20,7 +20,6 @@ class ArticlesController < ApplicationController
     @article.save
 
     flash.notice = "Article #{@article.title} has been created"
-
     redirect_to article_path(@article)
   end
 
