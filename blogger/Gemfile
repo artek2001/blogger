@@ -56,4 +56,8 @@ end
 
 gem 'paperclip'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+#
+#
+#
+gem 'sorcery'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
