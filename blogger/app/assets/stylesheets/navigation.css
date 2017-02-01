@@ -1,0 +1,8 @@
+nav {
+  width: 500px;
+  min-height: 30px;
+}
+
+ul.navlist li {
+  display: inline-block;
+}

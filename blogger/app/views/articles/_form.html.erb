@@ -24,6 +24,7 @@
     <%= f.file_field :image %>
   </p>
   <p>
+    <%= f.hidden_field :author_id, value: current_user.id %>
     <%= f.submit %>
   </p>
 <% end %>

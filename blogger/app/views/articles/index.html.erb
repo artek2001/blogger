@@ -1,9 +1,31 @@
-<h1>All articles</h1>
-<ul id="articles">
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-    </li>
+<% if !@month %>
+  <h1>All articles</h1>
+  <ul id="articles">
+    <br />
+    <%= form_tag articles_path, method: :get do %>
+      <%= select_month(Date.today, :prefix => 'month')  %>
+      <%= submit_tag "Select" %>
+    <% end %>
+    <br />
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %>
+        <span><%= article.views %></span>
+      </li>
+    <% end %>
+    </ul>
+  <% if logged_in? %>
+    <%= link_to "Create", new_article_path, class: "new_article" %>
   <% end %>
-  </ul>
-<%= link_to "Create", new_article_path, class: "new_article" %>
+<% else %>
+  <h1>Articles for month: <%= @month.to_s %></h1>
+  <% @articles_month = Article.where( "cast(strftime('%m', created_at) as int) = ?", @month) %>
+  <ul id="articles">
+    <% @articles_month.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %>
+        <span><%= article.views %></span>
+      </li>
+    <% end %>
+    </ul>
+<% end %>
